@@ -6,18 +6,21 @@
         <span>3 товара</span>
         <span>на сумму 3 500</span>
       </div>
-      <ButtonCartComponent />
+      <router-link to="/basket">
+        <ButtonComponent fontawesomeIcon='fa-solid fa-regular fa-basket-shopping fa-3xs' isBasketMain iconShow />
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 // import { ref } from 'vue'
-import ButtonCartComponent from '../ui/ButtonCart.vue'
+// import ButtonCartComponent from '../ui/ButtonCart.vue'
+import ButtonComponent from '../ui/Button.vue'
 export default {
   name: 'HeaderMainComponent',
   components: {
-    ButtonCartComponent
+    ButtonComponent
   },
   props: {
   },

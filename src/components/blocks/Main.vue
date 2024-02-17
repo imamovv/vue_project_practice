@@ -77,13 +77,8 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: center;
-  // gap: 20px;
   display: grid;
   grid-template-columns: repeat(4, 312px);
-  // grid-template-rows: 50% 50%;
   justify-content: center;
   grid-column-gap: 20px;
   grid-row-gap: 35px;

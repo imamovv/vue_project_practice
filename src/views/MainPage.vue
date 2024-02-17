@@ -28,7 +28,7 @@ export default {
 <style lang="scss" scoped>
 .main {
   background: #161516;
-  // height: calc(100vh - 135px);
+  padding-bottom: 45px;
 }
 
 .main__header {

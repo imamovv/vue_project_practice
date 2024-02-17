@@ -1,15 +1,29 @@
 <template>
-  <div class="card">
-    <div class="card__info">
-      <img class="card__image" :src="imageSource" alt="image.png">
-      <h2 class="card__title">{{ title }}</h2>
-      <h3 class="card__description">{{ description }}</h3>
-    </div>
-    <div class="card__footer">
-      <div class="card__price">
-        <span>{{ price }}</span>
+  <div style="display: flex; justify-content: center;">
+    <div v-if="!line" class="card">
+      <div class="card__info">
+        <img class="card__image" :src="imageSource" alt="image.png">
+        <h2 class="card__title">{{ title }}</h2>
+        <h3 class="card__description">{{ description }}</h3>
       </div>
-      <ButtonComponent />
+      <div class="card__footer">
+        <div class="card__price">
+          <span>{{ price }}</span>
+        </div>
+        <ButtonComponent fontawesomeIcon='fa-solid fa-plus fa-2xs' isMain iconShow/>
+      </div>
+    </div>
+    <div v-else class="cardBasket">
+      <div class="cardBasket__descr">
+        <img class="cardBasket_image" :src="imageSource" alt="image.png">
+        <h2 class="card__title">{{ title }}</h2>
+      </div>
+      <div class="cardBasket__elemets">
+        <div class="card__price">
+          <span>{{ price }}</span>
+        </div>
+        <ButtonComponent fontawesomeIcon='fa-solid fa-plus fa-2xs' isBasketCard iconShow isRotated/>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +38,7 @@ export default {
     ButtonComponent
   },
   props: {
+    line: Boolean,
     title: {
       type: String,
       default: 'Название блюда'
@@ -57,11 +72,20 @@ export default {
   flex-shrink: 0;
 }
 
+.cardBasket {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 860px;
+}
+
 .card__image {
   width: 270px;
   height: 271px;
   flex-shrink: 0;
-  padding-bottom: 30px;;
+  padding-bottom: 30px;
+  ;
 }
 
 .card__info {
@@ -98,12 +122,30 @@ export default {
 }
 
 .card__price {
-  color: #FFF;
+  color: rgb(213, 140, 81);
   font-family: Montserrat;
   font-size: 17px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+.cardBasket__elemets {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+}
+
+.cardBasket_image {
+  // position: absolute;
+  width: 132px;
+}
+
+.cardBasket__descr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 88px;
 }
 
 .card:hover .card__title {
