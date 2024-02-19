@@ -1,5 +1,8 @@
 import { createStore } from 'vuex'
 
+import goods from './modules/goods'
+import basket from './modules/basket'
+
 export default createStore({
   state: {
   },
@@ -10,5 +13,7 @@ export default createStore({
   actions: {
   },
   modules: {
+    goods,
+    basket
   }
 })

@@ -32,7 +32,11 @@ export default {
 }
 
 .main__header {
+  z-index: 1;
+  background-color: #161516;
+  position: fixed;
+  width: 100%;
   padding-top: 54px;
-  padding-bottom: 81px;
+  padding-bottom: 50px;
 }
 </style>

@@ -3,8 +3,8 @@
     <h1 class="header__title">наша продукция</h1>
     <div class="header__cart">
       <div class="header__text">
-        <span>3 товара</span>
-        <span>на сумму 3 500</span>
+        <span>{{ basketCount.length }} товара</span>
+        <span>на сумму {{ basketCount.reduce((a, b) => a + b.price, 0) }} ₽</span>
       </div>
       <router-link to="/basket">
         <ButtonComponent fontawesomeIcon='fa-solid fa-regular fa-basket-shopping fa-3xs' isBasketMain iconShow />
@@ -15,7 +15,8 @@
 
 <script>
 // import { ref } from 'vue'
-// import ButtonCartComponent from '../ui/ButtonCart.vue'
+import { useStore } from 'vuex'
+import { computed } from 'vue'
 import ButtonComponent from '../ui/Button.vue'
 export default {
   name: 'HeaderMainComponent',
@@ -25,6 +26,18 @@ export default {
   props: {
   },
   setup () {
+    const store = useStore()
+
+    const basketCount = computed(() => {
+      return store.getters.getBasketGoods
+    })
+
+    // const basketSum = computed(()=> {
+
+    // })
+    return {
+      basketCount
+    }
   }
 }
 </script>

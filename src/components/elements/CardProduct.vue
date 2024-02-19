@@ -70,6 +70,8 @@ export default {
   border: 1px solid #D58C51;
   width: 312px;
   flex-shrink: 0;
+  animation-duration: 1s;
+  transition: all 0.2s ease;
 }
 
 .cardBasket {
@@ -152,11 +154,11 @@ export default {
   color: #D58C51;
 }
 
+.card:hover {
+  transform: translate(0%, -20px);;
+}
 .card:hover .card__description {
   color: #D58C51;
 }
 
-.card:hover .card__price {
-  color: #D58C51;
-}
 </style>

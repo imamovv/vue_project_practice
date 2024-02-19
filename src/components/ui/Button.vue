@@ -116,9 +116,10 @@ export default {
   width: 45px;
   height: 45px;
   flex-shrink: 0;
-  background: none;
+  // background: none;
+  background-color: #D58C51;
   border: 1px solid #D58C51;
-  color: #D58C51;
+  color: #ffffff;
   font-size: 25px;
 }
 .buttonBasketFooter {
@@ -145,8 +146,8 @@ export default {
 }
 
 .buttonBasketMain:hover {
-  background: #D58C51;
-  color: rgb(19, 19, 19);
+  background: #ffffff;
+  color: #D58C51;
 }
 
 .buttonMainCard:hover {
