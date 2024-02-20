@@ -32,9 +32,6 @@ export default {
       return store.getters.getBasketGoods
     })
 
-    // const basketSum = computed(()=> {
-
-    // })
     return {
       basketCount
     }

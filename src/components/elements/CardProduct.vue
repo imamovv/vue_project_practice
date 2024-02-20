@@ -8,9 +8,9 @@
       </div>
       <div class="card__footer">
         <div class="card__price">
-          <span>{{ price }}</span>
+          <span>{{ price }} ₽</span>
         </div>
-        <ButtonComponent fontawesomeIcon='fa-solid fa-plus fa-2xs' isMain iconShow/>
+        <ButtonComponent @click="$emit('clickMain')" fontawesomeIcon='fa-solid fa-plus fa-2xs' isMain iconShow />
       </div>
     </div>
     <div v-else class="cardBasket">
@@ -20,9 +20,9 @@
       </div>
       <div class="cardBasket__elemets">
         <div class="card__price">
-          <span>{{ price }}</span>
+          <span>{{ price }} ₽</span>
         </div>
-        <ButtonComponent fontawesomeIcon='fa-solid fa-plus fa-2xs' isBasketCard iconShow isRotated/>
+        <ButtonComponent @click="$emit('clickBasket')" fontawesomeIcon='fa-solid fa-plus fa-2xs' isBasketCard iconShow isRotated />
       </div>
     </div>
   </div>
@@ -48,8 +48,8 @@ export default {
       default: 'Описание блюда'
     },
     price: {
-      type: String,
-      default: 'Цена товара'
+      type: Number,
+      default: 0
     },
     imageSource: {
       type: String,
