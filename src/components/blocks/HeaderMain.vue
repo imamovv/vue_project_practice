@@ -29,7 +29,7 @@ export default {
     const store = useStore()
 
     const basketCount = computed(() => {
-      return store.getters.getBasketGoods
+      return store.getters.getBasketProducts
     })
 
     return {

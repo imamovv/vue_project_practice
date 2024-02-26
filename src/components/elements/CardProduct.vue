@@ -1,11 +1,13 @@
 <template>
   <div style="display: flex; justify-content: center;">
-    <div v-if="!line" class="card">
-      <div class="card__info">
-        <img class="card__image" :src="imageSource" alt="image.png">
-        <h2 class="card__title">{{ title }}</h2>
-        <h3 class="card__description">{{ description }}</h3>
-      </div>
+    <div v-if="line == 'card'" class="card">
+      <router-link :to="`/good/${id}`" style="text-decoration: none;">
+        <div class="card__info">
+          <img class="card__image" :src="imageSource" alt="image.png">
+          <h2 class="card__title">{{ title }}</h2>
+          <h3 class="card__description">{{ description }}</h3>
+        </div>
+      </router-link>
       <div class="card__footer">
         <div class="card__price">
           <span>{{ price }} ₽</span>
@@ -13,7 +15,7 @@
         <ButtonComponent @click="$emit('clickMain')" fontawesomeIcon='fa-solid fa-plus fa-2xs' isMain iconShow />
       </div>
     </div>
-    <div v-else class="cardBasket">
+    <div v-else-if="line == 'cardBasket'" class="cardBasket">
       <div class="cardBasket__descr">
         <img class="cardBasket_image" :src="imageSource" alt="image.png">
         <h2 class="card__title">{{ title }}</h2>
@@ -23,6 +25,21 @@
           <span>{{ price }} ₽</span>
         </div>
         <ButtonComponent @click="$emit('clickBasket')" fontawesomeIcon='fa-solid fa-plus fa-2xs' isBasketCard iconShow isRotated />
+      </div>
+    </div>
+    <div v-else-if="line == 'cardProduct'" class="cardProduct">
+      <div class="cardProduct__info">
+        <img class="cardProduct_image" :src="imageSource" alt="image.png">
+        <div class="cardProduct__text">
+          <h2 class="cardProduct__title">{{ title }}</h2>
+          <p class="cardProduct__description">{{ description }}</p>
+          <div class="cardProduct__elements">
+            <div class="card__price">
+              <span>{{ price }} ₽</span>
+            </div>
+            <ButtonComponent @click="$emit('clickProduct')" isBasketFooter textShow :buttonText="isInBasket ? 'Удалить из корзины' : 'В корзину'" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -38,7 +55,14 @@ export default {
     ButtonComponent
   },
   props: {
-    line: Boolean,
+    line: {
+      type: String,
+      default: 'card'
+    },
+    id: {
+      type: Number,
+      default: 0
+    },
     title: {
       type: String,
       default: 'Название блюда'
@@ -54,6 +78,10 @@ export default {
     imageSource: {
       type: String,
       default: 'default'
+    },
+    isInBasket: {
+      type: Boolean,
+      default: false
     }
   },
   setup () {
@@ -63,6 +91,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -160,5 +189,52 @@ export default {
 .card:hover .card__description {
   color: #D58C51;
 }
+.cardProduct {
+  padding-top: 10%;
+  display: grid;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  gap: 10%;
+  width: 860px;
+}
 
+.cardProduct__elements {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+}
+
+.cardProduct_image {
+  // position: absolute;
+  width: 501px;
+}
+
+.cardProduct__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 88px;
+}
+.cardProduct__title {
+  color: rgb(213, 140, 81);
+  font-family: Montserrat;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.cardProduct__description {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.cardProduct__text {
+  display: grid;
+  justify-content: space-between;
+  gap: 30px;
+}
 </style>
