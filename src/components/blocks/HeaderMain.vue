@@ -9,12 +9,14 @@
       <router-link to="/basket">
         <ButtonComponent fontawesomeIcon='fa-solid fa-regular fa-basket-shopping fa-3xs' isBasketMain iconShow />
       </router-link>
+      <ButtonComponent @click="unloginUser" isBasketFooter textShow buttonText="Выйти"/>
     </div>
   </div>
 </template>
 
 <script>
 // import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 import ButtonComponent from '../ui/Button.vue'
@@ -27,12 +29,18 @@ export default {
   },
   setup () {
     const store = useStore()
+    const router = useRouter()
 
     const basketCount = computed(() => {
       return store.getters.getBasketProducts
     })
+    const unloginUser = () => {
+      store.commit('unloginUser')
+      router.push('/auth')
+    }
 
     return {
+      unloginUser,
       basketCount
     }
   }

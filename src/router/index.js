@@ -6,7 +6,8 @@ import AuthPage from '@/views/AuthPage.vue'
 const routes = [{
   path: '/',
   name: 'home',
-  component: MainPage
+  component: MainPage,
+  meta: { requiresAuth: true }
 },
 {
   path: '/basket',
@@ -24,7 +25,7 @@ const routes = [{
   path: '/auth',
   name: 'auth',
   component: AuthPage,
-  meta: { requiresAuth: true }
+  meta: { notAuthOnly: true }
 }
 ]
 
